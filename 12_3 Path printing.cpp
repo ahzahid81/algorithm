@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ #include <bits/stdc++.h>
 using namespace std;
 const int N = 2e5+5;
 vector<int> adj_list[N];
@@ -9,10 +9,10 @@ int parent[N];
 void bfs(int src)
 {
     queue <int> q;
-    q.push(src);
     visited[src] = 1;
     level[src] = 1;
     parent[src] = -1;
+    q.push(src);
 
     while(!q.empty())
     {
@@ -20,12 +20,12 @@ void bfs(int src)
         q.pop();
         for(int adj_node: adj_list[head])
         {
-            if(visited[adj_node] == 0)
+            if(!visited[adj_node])
             {
-                q.push(adj_node);
                 visited[adj_node] = 1;
                 level[adj_node] = level[head] + 1;
                 parent[adj_node] = head;
+                q.push(adj_node);
             }
         }
 
@@ -37,7 +37,7 @@ int main ()
     int nodes, edges;
     cin >> nodes >> edges;
 
-    for(int i=1; i<=edges; i++)
+    for(int i=0; i<edges; i++)
     {
         int u, v;
         cin >> u >> v;
@@ -46,9 +46,10 @@ int main ()
     }
 
     int src = 1;
+    bfs(src);
     int dst = nodes;
 
-    if(visited[dst] == 0)
+    if(!visited[dst])
     {
         cout <<"IMPOSSIBLE\n";
     }
