@@ -56,7 +56,7 @@ void dijkstra(int src)
 
 int main ()
 {
-    
+
     cin >> nodes >> edges;
 
     for(int i=0; i<edges; i++)
@@ -68,7 +68,7 @@ int main ()
         adj_list[v].push_back({u, w});
     }
 
-    int src = 1;
+    int src = 4;
     dijkstra(src);
 
     int current_node = nodes;
